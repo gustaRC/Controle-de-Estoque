@@ -1,0 +1,9 @@
+<app-toolbar-navigation></app-toolbar-navigation>
+
+<app-categories-table
+  [categories]="categories"
+  (actionTableEvent)="receivedEmit($event)"
+  (deleteEvent)="receivedDeleteEmit($event)"
+></app-categories-table>
+
+<p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>

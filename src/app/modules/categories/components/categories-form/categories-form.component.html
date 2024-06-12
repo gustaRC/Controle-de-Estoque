@@ -1,0 +1,19 @@
+<div>
+  <form [formGroup]="categoryForm" (ngSubmit)="submitCategory()">
+    <div class="card flex flex-column md:flex-column gap-3">
+      <!-- NOME CATEGORIA -->
+      <input pInputText placeholder="Nome" formControlName="name">
+
+      <div class="flex flex-row justify-content-center align-content-center align-items-center m-1">
+        <p-button
+        [disabled]="!categoryForm.valid"
+        type="submit"
+        label="Concluir"
+        ></p-button>
+      </div>
+
+    </div>
+
+  </form>
+
+</div>

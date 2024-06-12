@@ -1,0 +1,93 @@
+<div class="grid">
+  <div class="col-12">
+    <p-card
+    styleClass="shadow-3 m-5 text-indigo-800"
+    header="Categorias"
+    >
+      <p-table
+      #productsTable
+      [value]="categories"
+      [rows]="10"
+      [paginator]="true"
+      [responsive]="true"
+      [globalFilterFields]="['name']"
+      (selection)="categorySelected"
+      [rowHover]="true"
+      [showCurrentPageReport]="true"
+      dataKey="id"
+      currentPageReportTemplate="Mostrando {first} de {last} de {totalRecords} categorias"
+      >
+
+        <ng-template pTemplate="header">
+          <tr>
+            <th pSortableColumn="name">
+              <div class="flex justify-content-between align-items-center">
+                <div class="flex justify-content-between align-items-center">
+                  Nome
+                </div>
+                <div class="flex justify-content-between align-items-center">
+                  <p-sortIcon field="name"></p-sortIcon>
+                  <p-columnFilter
+                  type="text"
+                  field="name"
+                  display="menu"
+                  matchMode="contains"
+                  [showMatchModes]="false"
+                  [showOperator]="false"
+                  [showAddButton]="false"
+                  ></p-columnFilter>
+                </div>
+              </div>
+            </th>
+            <th>
+              <div class="flex justify-content-end">
+                <p-button
+                styleClass="p-button-info"
+                icon="pi pi-plus"
+                label="Adicionar"
+                pTooltip="Adicionar Categória"
+                tooltipPosition="top"
+                (onClick)="actionCategoryEventEmit(addCategoryAction)"
+                ></p-button>
+              </div>
+            </th>
+
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-category>
+          <tr>
+            <td>
+              {{category?.name}}
+            </td>
+            <td>
+              <div class="flex justify-content-end align-items-center mr-3">
+                <button
+                pButton
+                pRipple
+                icon="pi pi-pencil"
+                class="p-button-rounded p-button-warning"
+                (click)="actionCategoryEventEmit(editCategoryAction, category)"
+                pTooltip="Editar Produto"
+                tooltipPosition="top"
+                ></button>
+                <button
+                pButton
+                pRipple
+                icon="pi pi-trash"
+                class="p-button-rounded p-button-danger ml-2"
+                pTooltip="Remover Produto"
+                (click)="actionDeleteCategoryEmit(category)"
+                tooltipPosition="top"
+                ></button>
+              </div>
+            </td>
+
+          </tr>
+        </ng-template>
+
+      </p-table>
+
+    </p-card>
+  </div>
+</div>

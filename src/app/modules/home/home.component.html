@@ -1,0 +1,79 @@
+<div class="grid bg-indigo-800">
+
+  <div class="col-12">
+    <div class="flex justify-content-center align-content-center text-align-center">
+
+      <!-- LOGIN -->
+      <form *ngIf="loginCard" [formGroup]="loginForm" (ngSubmit)="submitLoginForm()">
+        <p-card
+          styleClass="mt-10"
+          header="Login"
+          subheader="Faça login com sua conta existente!">
+
+          <!-- EMAIL -->
+          <div class="flex justify-content-center align-content-center text-align-center">
+            <input type="email" pInputText placeholder="Email" formControlName="email">
+          </div>
+          <!-- SENHA -->
+          <div class="flex justify-content-center align-content-center text-align-center mt-3">
+            <input type="password" pInputText placeholder="Senha" formControlName="password">
+          </div>
+          <!-- BTN LOGIN -->
+          <div class="flex justify-content-center align-content-center text-align-center mt-3">
+            <button type="submit" pButton pRipple [disabled]="!loginForm.valid">
+              Login
+            </button>
+          </div>
+          <!-- BTN CADASTRAR -->
+          <span
+            (click)="loginCard = !loginCard"
+            class="flex justify-content-center align-content-center text-align-center mt-3 text-red-600 font-semibold"
+            style="cursor: pointer;"
+          >
+              Criar Conta
+          </span>
+
+        </p-card>
+      </form>
+
+      <!-- CADASTRAR -->
+      <form *ngIf="!loginCard" [formGroup]="cadastroForm" (ngSubmit)="submitCadatroForm()">
+        <p-card
+          styleClass="mt-10"
+          header="Criar conta"
+          subheader="Crie já sua conta gratuita!">
+
+          <!-- NOME -->
+          <div class="flex justify-content-center align-content-center text-align-center">
+            <input type="text" pInputText placeholder="Nome" formControlName="name">
+          </div>
+          <!-- EMAIL -->
+          <div class="flex justify-content-center align-content-center text-align-center mt-3">
+            <input type="email" pInputText placeholder="Email" formControlName="email">
+          </div>
+          <!-- SENHA -->
+          <div class="flex justify-content-center align-content-center text-align-center mt-3">
+            <input type="password" pInputText placeholder="Senha" formControlName="password">
+          </div>
+          <!-- BTN CRIAR CONTA -->
+          <div class="flex justify-content-center align-content-center text-align-center mt-3">
+            <button type="submit" pButton pRipple [disabled]='!cadastroForm.valid'>
+              Criar Conta
+            </button>
+          </div>
+          <!-- BTN LOGIN -->
+          <span
+            (click)="loginCard = !loginCard"
+            class="flex justify-content-center align-content-center text-align-center mt-3 text-blue-600 font-semibold"
+            style="cursor: pointer;"
+          >
+              Fazer Login
+          </span>
+
+        </p-card>
+      </form>
+    </div>
+    <p class="text-gray-300 flex justify-content-center mt-3 text">Gustavo Rodrigues © 2024</p>
+  </div>
+
+</div>
