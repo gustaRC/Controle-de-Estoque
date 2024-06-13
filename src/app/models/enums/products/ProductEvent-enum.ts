@@ -1,5 +1,6 @@
 export enum ProductEventEnum {
   ADD_PRODUCT = 'Adicionar Produto',
   EDIT_PRODUCT = 'Editar Produto',
-  DELETE_PRODUCT = 'Deletar Produto'
+  DELETE_PRODUCT = 'Deletar Produto',
+  SALE_PRODUCT = 'Vender Produto'
 }

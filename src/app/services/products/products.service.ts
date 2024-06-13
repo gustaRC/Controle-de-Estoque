@@ -4,9 +4,11 @@ import { CookieService } from 'ngx-cookie-service';
 import { Observable, map } from 'rxjs';
 import { EditProductRequestInterface } from 'src/app/models/interfaces/products/request/editProductRequest-interface';
 import { ProductCreateRequestInterface } from 'src/app/models/interfaces/products/request/productCreateRequest-interface';
+import { SaleProductRequest } from 'src/app/models/interfaces/products/request/saleProduct-request';
 import { DeleteProductResponse } from 'src/app/models/interfaces/products/response/deleteProduct-response';
 import { GetAllProductsResponse } from 'src/app/models/interfaces/products/response/getAllProducts-reponse';
 import { ProductCreateResponseInterface } from 'src/app/models/interfaces/products/response/productCreateResponse-interface';
+import { SaleProductResponse } from 'src/app/models/interfaces/products/response/saleProduct-response';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -50,6 +52,15 @@ export class ProductsService {
 
   editProduct(product: EditProductRequestInterface): Observable<any> {
     return this.http.put<any>(`${this.API_URL}/product/edit`, product, this.httpOptions)
+  }
+
+  saleProduct(data: SaleProductRequest): Observable<SaleProductResponse> {
+    return this.http.put<SaleProductResponse>(`${this.API_URL}/product/sale`, {amount: data?.amount}, {
+      ...this.httpOptions,
+      params: {
+        product_id: data?.product_id
+      }
+    })
   }
 
 }

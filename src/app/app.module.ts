@@ -18,11 +18,13 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './modules/home/home.component';
 import { CookieService } from 'ngx-cookie-service';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
+import { AppFooterComponent } from './app.footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    AppFooterComponent,
   ],
   imports: [
     //PrimeNG imports

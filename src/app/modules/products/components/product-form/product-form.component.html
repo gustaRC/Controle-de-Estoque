@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="dialogData.action === productEvent.ADD_PRODUCT || dialogData.action === productEvent.EDIT_PRODUCT">
   <form [formGroup]="productForm" (ngSubmit)="submitProduct()">
     <div class="card flex flex-column md:flex-column gap-3">
       <!-- NOME PRODUTO -->
@@ -32,4 +32,31 @@
 
   </form>
 
+</div>
+
+<div *ngIf="dialogData.action === productEvent.SALE_PRODUCT">
+  <form [formGroup]="saleProductForm" (submit)="submitSale()">
+
+    <div class="card flex flex-column md:flex-column gap-3">
+      <p-dropdown
+      [options]="productsDatas"
+      [(ngModel)]="selectedProductSale"
+      styleClass="w-full"
+      optionLabel="name"
+      optionValue="id"
+      placeholder="Selecionar Produto"
+      formControlName="product_id"
+      ></p-dropdown>
+
+      <input pInputText type="number" placeholder="Quantidade" formControlName="amount">
+    </div>
+
+    <div class="flex flex-row justify-content-center align-content-center align-items-center m-2">
+      <p-button
+      [disabled]="!saleProductForm.valid"
+      type="submit"
+      label="Efetuar Venda"
+      ></p-button>
+    </div>
+  </form>
 </div>
