@@ -1,5 +1,5 @@
 import { MessageService } from 'primeng/api';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { AutenticarRequest } from 'src/app/models/interfaces/autenticar/Autenticar-request';
@@ -13,7 +13,10 @@ import { Subject, takeUntil } from 'rxjs';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
+
+  @ViewChild('inputEmail') emailInputRef!: ElementRef;
+  @ViewChild('inputPassword') passwordInputRef!: ElementRef;
 
   loginCard: boolean = true
 
@@ -39,6 +42,13 @@ export class HomeComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+  }
+
+  ngAfterViewInit(): void {
+    this.emailInputRef.nativeElement.value = 'Seu e-mail aqui'
+    this.passwordInputRef.nativeElement.value = 'Sua senha aqui'
+    console.log('EMAIL INPUT', this.emailInputRef)
+    console.log('PASSWORD INPUT', this.passwordInputRef)
   }
 
   resetarFormularios() {

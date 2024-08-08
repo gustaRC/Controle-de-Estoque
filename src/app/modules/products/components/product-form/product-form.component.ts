@@ -236,8 +236,6 @@ export class ProductFormComponent implements OnInit, OnDestroy {
           console.error(error)
         }
       )
-
-
     }
   }
 
